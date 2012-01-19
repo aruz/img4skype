@@ -54,6 +54,8 @@ namespace img4skype
             _src = new Bitmap(openFileDialog1.FileName);
 
             pictureBox1.Image = _src;
+
+            button2.Enabled = true;
         }
 
         private void Button2Click(object sender, EventArgs e)
@@ -107,7 +109,7 @@ namespace img4skype
                             data += "<u>";
                             utag = true;
                         }
-                        data += "█";
+                        data += "█";
                         PreviewSetPixel(preview, j, i, maxColor);
                         continue;
                     }
