@@ -74,6 +74,8 @@ namespace img4skype
                 for (var j = 0; j < img.Width; j++)
                 {
                     var color = img.GetPixel(j, i);
+                    color = color.A == 0 ? Color.White : Color.FromArgb(color.R, color.G, color.B);
+
                     if (ColorCmp(color, Color.White, d)) continue;
                     var colorSet = list.FirstOrDefault(c => ColorCmp(c.Color, color, d));
                     if (colorSet == null)
@@ -96,6 +98,7 @@ namespace img4skype
                 for (var j = 0; j < img.Width; j++)
                 {
                     var color = img.GetPixel(j, i);
+                    color = color.A == 0 ? Color.White : Color.FromArgb(color.R, color.G, color.B);
 
                     if (ColorCmp(color, maxColor, d))
                     {
@@ -177,7 +180,7 @@ namespace img4skype
         {
             for (var i = 0; i < 2; i++)
                 for (var j = 0; j < 3; j++)
-                    p.SetPixel(x * 2 + i, y * 3 + j, Color.FromArgb(c.R, c.G, c.B));
+                    p.SetPixel(x * 2 + i, y * 3 + j, c);
 
         }
     }
