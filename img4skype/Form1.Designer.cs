@@ -41,6 +41,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -102,19 +103,21 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.textBox2);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Location = new System.Drawing.Point(93, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(154, 50);
+            this.groupBox3.Size = new System.Drawing.Size(225, 50);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Convert options";
             // 
             // textBox2
             // 
+            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(119, 19);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(28, 20);
@@ -144,7 +147,7 @@
             this.groupBox4.Controls.Add(this.pictureBox2);
             this.groupBox4.Location = new System.Drawing.Point(253, 68);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(229, 193);
+            this.groupBox4.Size = new System.Drawing.Size(278, 193);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Preview";
@@ -153,24 +156,37 @@
             // 
             this.pictureBox2.Location = new System.Drawing.Point(6, 19);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(217, 168);
+            this.pictureBox2.Size = new System.Drawing.Size(266, 168);
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(265, 31);
+            this.label1.Location = new System.Drawing.Point(324, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "HTML-code will be copied to the clipboard";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(153, 21);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(67, 17);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Min error";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 272);
+            this.ClientSize = new System.Drawing.Size(548, 277);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button2);
@@ -205,6 +221,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

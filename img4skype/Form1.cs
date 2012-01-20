@@ -51,7 +51,10 @@ namespace img4skype
             {
                 for (var x = 0; x < bitmap.Width; x++)
                 {
-                    yield return bitmap.GetPixel(x, y);
+                    var pixel = bitmap.GetPixel(x, y);
+                    yield return pixel.A == 0
+                                     ? Color.White
+                                     : Color.FromArgb(pixel.R, pixel.G, pixel.B);
                 }
                 yield return null;
             }
@@ -70,7 +73,14 @@ namespace img4skype
                 .Where(c => c != null)
                 .Select(row => row.Value)
                 .GroupBy(row => row)
-                .ToDictionary(row => row.Key, row => new { newColor = row.Key, count = row.Count() });
+                .ToDictionary(row => row.Key,
+                              row => new
+                                         {
+                                             newColor = row.Key.A == 0
+                                                            ? Color.White
+                                                            : Color.FromArgb(row.Key.R, row.Key.G, row.Key.B),
+                                             count = row.Count()
+                                         });
 
             var processed = new HashSet<Color>();
 
@@ -167,11 +177,15 @@ namespace img4skype
             var h = Convert.ToInt32(textBox1.Text);
             var img = ResizeImage(_src, Convert.ToInt32(h * 1.5), Convert.ToInt32(h * rate));
             var scaned = Scan(img).ToArray();
-
+            if (scaned.Length > 7000)
+            {
+                label1.Text = "Very big size";
+                return;
+            }
             var error = Convert.ToInt32(textBox2.Text);
 
             // попробуем подобрать минимальное возможное колличество ошибок
-            if (error == 0)
+            if (checkBox1.Checked)
             {
                 error = Enumerable.Range(0, int.MaxValue).BinarySearch(err =>
                 {
@@ -257,6 +271,11 @@ namespace img4skype
             }
 
             finish();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox2.Enabled = !checkBox1.Checked;
         }
 
 
